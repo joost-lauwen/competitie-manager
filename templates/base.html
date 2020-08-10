@@ -16,7 +16,7 @@
   <div class="container-navbar">
     {% block navbar %}
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="">Competitie</a>
+      <a class="navbar-brand" href="{% url 'competitie_manager_app:index' %}">Thuispagina</a>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
@@ -30,16 +30,16 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="">Uitloggen</a>
+            <a class="nav-link" href="{% url 'competitie_manager_app:logout' %}">Uitloggen</a>
           </li>
 
           {% else %}
 
           <li class="nav-item">
-            <a class="nav-link" href="">Registreren</a>
+            <a class="nav-link" href="{% url 'competitie_manager_app:signup' %}">Registreren</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Inloggen</a>
+            <a class="nav-link" href="{% url 'competitie_manager_app:login' %}">Inloggen</a>
           </li>
 
           {% endif %}
@@ -54,6 +54,6 @@
 
     {% endblock %}
   </div>
-</body>
 
+</body>
 </html>
