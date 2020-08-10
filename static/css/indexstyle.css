@@ -1,0 +1,19 @@
+h1 {
+    color: orange;
+}
+
+table, th, td {
+    border: 2px solid black;
+}
+
+.container-navbar {
+    padding-bottom: 75px;
+}
+
+.image-container {
+    width: 20rem;
+}
+
+body {
+  padding-top: 20px;
+}
