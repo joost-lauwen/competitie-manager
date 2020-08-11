@@ -1,0 +1,20 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <div class="competition-detail-container">
+      <h1>{{ competition_detail.naam }}</h1>
+      <h2>{{ competition_detail.sport_soort }}</h2>
+
+      {% if request.user.get_username == competition_detail.made_by.get_username %}
+      <div>
+        <div>
+          <p><a class="btn btn-danger" href="">Verwijderen</a></p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
