@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <div class="team-detail-container">
+      <h1>{{ team_detail.naam }}</h1>
+
+      <div class="image-container">
+        <img class="logo" src="/media/{{ team_detail.image }}"></img>
+      </div>
+
+      {% if request.user.get_username == team_detail.made_by.get_username %}
+      <div>
+        <div>
+          <p><a class="btn btn-warning" href="">Bewerken</a></p>
+        </div>
+        <div>
+          <p><a class="btn btn-danger" href="">Verwijderen</a></p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
