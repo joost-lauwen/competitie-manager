@@ -17,4 +17,8 @@ urlpatterns = [
     path('registreren/',
         views.register_view.SignUp.as_view(),
         name='signup'),
+    path('teammaken/', views.CreateTeamView.as_view(),
+    name='create_team'),
+    path('team/<int:pk>/', views.TeamDetailView.as_view(),
+    name='team_detail'),
 ]
