@@ -8,7 +8,7 @@
       <h2>{{ competition_detail.sport_soort }}</h2>
 
       {% for team in competition_teams_detail %}
-        <p>{{ team.naam }}</p>
+        <p>{{ team.team.naam }} </p> {{ team.points }}
       {% endfor %}
 
       {% if request.user.get_username == competition_detail.made_by.get_username %}
