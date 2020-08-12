@@ -15,9 +15,10 @@ class CreateCompetitionView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.made_by = self.request.user
-        redirect_url= super(CreateCompetitionView, self).form_valid(form)
+        redirect_url = super(CreateCompetitionView, self).form_valid(form)
 
-        comp_teams = Team.objects.filter(sport_soort=form.instance.sport_soort).filter(competitie__isnull=True)[:12]
+        comp_teams = Team.objects.filter(
+            sport_soort=form.instance.sport_soort).filter(competitie__isnull=True)[:12]
 
         for team in comp_teams:
             team.competitie = form.instance
