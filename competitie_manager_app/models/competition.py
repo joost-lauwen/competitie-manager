@@ -14,4 +14,3 @@ class Competition(models.Model):
 
     def get_absolute_url(self):
         return reverse('competitie_manager_app:competition_detail', kwargs={"pk": self.pk})
-0
