@@ -1,0 +1,15 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+
+  {% for match in match_list  %}
+    <h2><a href="{% url 'competitie_manager_app:match_detail' competitie=match.competition pk=match.pk %}">{{ match.home_team.naam }} vs {{ match.away_team.naam }}</a></h2>
+    <p>{{ match.h_goals }} - {{ match.a_goals }}</p>
+    <a href=""></a>
+  {% endfor %}
+
+</div>
+
+{% endblock %}

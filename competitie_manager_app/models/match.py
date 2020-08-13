@@ -12,6 +12,10 @@ class Match(models.Model):
     competition = models.ForeignKey(
         Competition, null=True, on_delete=models.SET_NULL, related_name='competition_match')
     result = models.IntegerField(null=True, default=0)
+    h_goals = models.IntegerField(null=True, default=0)
+    a_goals = models.IntegerField(null=True, default=0)
+    is_finished = models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.competition.naam + ' // ' + self.home_team.naam + ' vs ' + self.away_team.naam
