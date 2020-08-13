@@ -4,3 +4,7 @@ from .create_team_view import *
 from .team_detail_view import *
 from .create_competition_view import *
 from .competition_detail_view import *
+from .competition_list_view import *
+from .match_detail_view import *
+from .match_list_view import *
+from .match_update_view import *

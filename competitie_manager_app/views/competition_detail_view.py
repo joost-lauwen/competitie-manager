@@ -3,6 +3,7 @@ from competitie_manager_app.models.competition import Competition
 from competitie_manager_app.models.team import Team
 from competitie_manager_app.models.team_competition import TeamCompetition
 
+
 class CompetitionDetailView(DetailView):
     model = Competition
     context_object_name = 'competition_detail'
@@ -13,13 +14,11 @@ class CompetitionDetailView(DetailView):
         competition = self.get_object()
         query_set_team = Team.objects.filter(
             competition=competition).order_by('naam')
-            # .prefetch_related(
-            # Prefetch('competition_set', Competition.objects.select_related('team')
-            # ))
 
-        query_set = TeamCompetition.objects.filter(competition=competition)
-        # team_competition = TeamCompetition.objects.filter(team__id)
+        query_set = TeamCompetition.objects.filter(
+            competition=competition).order_by('points').order_by('team__naam')
 
-        context.update({'teams_detail': query_set_team, 'competition_teams_detail':query_set})
+        context.update({'teams_detail': query_set_team,
+                        'competition_teams_detail': query_set})
 
         return context

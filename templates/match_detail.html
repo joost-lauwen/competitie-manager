@@ -1,0 +1,17 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <div class="match-detail-container">
+      <h1>{{ match_detail.home_team.naam }} vs {{ match_detail.away_team.naam }}<h1>
+      <h2>{{ match_detail.h_goals }} - {{ match_detail.a_goals }}</h2>
+
+      {% if not match_detail.is_finished %}
+        <a class="btn btn-primary" href="{% url 'competitie_manager_app:match_update' competitie=match_detail.competition pk=match_detail.pk %}">Uitslag invullen<span class="sr-only">(current)</span></a>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -7,17 +7,12 @@
       <h1>{{ competition_detail.naam }}</h1>
       <h2>{{ competition_detail.sport_soort }}</h2>
 
+      <a class="btn btn-primary" href="{% url 'competitie_manager_app:matches' competitie=competition_detail.naam %}">Wedstrijden<span class="sr-only">(current)</span></a>
+
       {% for team in competition_teams_detail %}
         <p>{{ team.team.naam }} </p> {{ team.points }}
       {% endfor %}
 
-      {% if request.user.get_username == competition_detail.made_by.get_username %}
-      <div>
-        <div>
-          <p><a class="btn btn-danger" href="">Verwijderen</a></p>
-        </div>
-      </div>
-      {% endif %}
     </div>
   </div>
 </div>
