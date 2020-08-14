@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from .competition import Competition
+from .team_competition import TeamCompetition
 from .team import Team
 
 
@@ -22,3 +23,12 @@ class Match(models.Model):
 
     def get_absolute_url(self):
         return reverse('competitie_manager_app:match_detail', kwargs={"competitie":self.competition, "pk": self.pk})
+
+    # def get_quotation_h_team(self):
+    #     h_team_points = TeamCompetition.objects.filter(
+    #         competition=competition, team=self.home_team).values('points')
+    #     a_team_points = TeamCompetition.objects.filter(
+    #         competition=competition, team=self.away_team).values('points')
+    #
+    #     if h_team_points > a_team_points:
+    #

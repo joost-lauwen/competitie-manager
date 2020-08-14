@@ -22,8 +22,6 @@ class CreateCompetitionView(LoginRequiredMixin, CreateView):
         comp_teams = Team.objects.filter(
             sport_soort=form.instance.sport_soort).order_by('?')[:12]
 
-        # .filter(competition__isnull=True)
-
         for team in comp_teams:
             team.competition.add(form.instance)
 

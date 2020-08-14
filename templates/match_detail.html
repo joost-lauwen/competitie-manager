@@ -9,6 +9,7 @@
 
       {% if not match_detail.is_finished %}
         <a class="btn btn-primary" href="{% url 'competitie_manager_app:match_update' competitie=match_detail.competition pk=match_detail.pk %}">Uitslag invullen<span class="sr-only">(current)</span></a>
+        <a class="btn btn-primary" href="{% url 'competitie_manager_app:bet_create' competitie=match_detail.competition match_pk=match_detail.pk %}">Wedden<span class="sr-only">(current)</span></a>
       {% endif %}
 
     </div>
