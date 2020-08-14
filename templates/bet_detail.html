@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <div class="bet-detail-container">
+      <h1>{{ bet_detail.match.home_team.naam }} vs {{ bet_detail.match.away_team.naam }}<h1>
+      <h2>{{ bet_detail.quotation_h_team }} - {{ bet_detail.quotation_a_team }} - {{ bet_detail.quotation_draw }}</h2>
+      <p>Inzet: {{ bet_detail.stake }}</p>
+      <p>Gok: {{ bet_detail.gamble }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

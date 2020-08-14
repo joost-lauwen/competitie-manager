@@ -8,3 +8,6 @@ from .competition_list_view import *
 from .match_detail_view import *
 from .match_list_view import *
 from .match_update_view import *
+from .bet_detail_view import *
+from .create_bet_view import *
+from .bet_list_view import *
