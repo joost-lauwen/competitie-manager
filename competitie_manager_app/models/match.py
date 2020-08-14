@@ -19,3 +19,6 @@ class Match(models.Model):
 
     def __str__(self):
         return self.competition.naam + ' // ' + self.home_team.naam + ' vs ' + self.away_team.naam
+
+    def get_absolute_url(self):
+        return reverse('competitie_manager_app:match_detail', kwargs={"competitie":self.competition, "pk": self.pk})

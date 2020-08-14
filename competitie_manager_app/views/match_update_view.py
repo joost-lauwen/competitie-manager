@@ -1,5 +1,6 @@
 from django.views.generic import UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse
 from competitie_manager_app.models.match import Match
 from competitie_manager_app.models.team_competition import TeamCompetition
 from competitie_manager_app.forms.match_form import MatchUpdateForm
