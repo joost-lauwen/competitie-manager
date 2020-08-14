@@ -4,6 +4,7 @@ from django.urls import reverse
 from competitie_manager_app.models.bet import Bet
 from competitie_manager_app.models.match import Match
 from competitie_manager_app.forms.bet_form import BetCreateForm
+from competitie_manager_app.models.user_toto_info import UserTotoInfo
 
 
 class CreateBetView(LoginRequiredMixin, CreateView):
@@ -19,12 +20,20 @@ class CreateBetView(LoginRequiredMixin, CreateView):
         return reverse('bet_detail', kwargs={"competitie": self.match.competition, "match_pk": self.match, "pk": self.object.pk})
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        user = self.request.user
+        form.instance.user = user
+
         match = Match.objects.get(pk=self.kwargs['match_pk'])
+
         form.instance.match = match
         form.instance.quotation_h_team = Bet.get_quotation_h_team(form.instance)
         form.instance.quotation_a_team = Bet.get_quotation_a_team(form.instance)
         form.instance.quotation_draw = Bet.get_quotation_draw(form.instance)
+
+        user_toto_points = UserTotoInfo.objects.get(user=user).toto_points
+        new_user_toto_points = user_toto_points - form.instance.stake
+
+        UserTotoInfo.objects.filter(user=user).update(user=user, toto_points=new_user_toto_points)
 
         redirect_url = super(CreateBetView, self).form_valid(form)
 
