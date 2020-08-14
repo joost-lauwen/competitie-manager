@@ -16,6 +16,7 @@ class Bet(models.Model):
     quotation_h_team = models.DecimalField(decimal_places=2, max_digits=9999)
     quotation_a_team = models.DecimalField(decimal_places=2, max_digits=9999)
     quotation_draw = models.DecimalField(decimal_places=2, max_digits=9999)
+    prize_amount = models.DecimalField(decimal_places=2, max_digits=9999, default=0.00)
 
     def __str__(self):
         return self.user.username + ' // ' + self.match.home_team.naam + ' vs ' + self.match.away_team.naam
