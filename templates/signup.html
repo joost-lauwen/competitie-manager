@@ -4,12 +4,15 @@
 {% block content %}
 
 <div class="container">
-  <h1>Registreren</h1>
-  <form class="" method="post">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <input type="submit" class="btn btn-primary" value="Registreren">
-  </form>
+  <div class="jumbotron">
+    <h1>Registreren</h1>
+    <form class="" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input type="submit" class="btn btn-warning" value="Registreren">&nbsp;&nbsp;
+      <a href="{% url 'competitie_manager_app:login' %}">Al een account? Klik hier om in te loggen.</a>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

@@ -8,6 +8,11 @@
       <h2>{{ bet_detail.quotation_h_team }} - {{ bet_detail.quotation_a_team }} - {{ bet_detail.quotation_draw }}</h2>
       <p>Inzet: {{ bet_detail.stake }}</p>
       <p>Gok: {{ bet_detail.gamble }}</p>
+      {% if bet_detail.match.is_finished and bet_detail.bet_result %}
+        <p>Gefeliciteerd! Je hebt {{bet_detail.prize_amount}} punten gewonnen!</p>
+      {% elif bet_detail.match.is_finished and not bet_detail.bet_result %}
+        <p>Helaas... Je bent {{bet_detail.stake}} punten verloren!</p>
+      {% endif %}
     </div>
   </div>
 </div>

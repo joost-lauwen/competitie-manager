@@ -15,7 +15,6 @@ class CreateBetView(LoginRequiredMixin, CreateView):
     model = Bet
     form_class = BetCreateForm
 
-
     def get_succes_url(self):
         return reverse('bet_detail', kwargs={"competitie": self.match.competition, "match_pk": self.match, "pk": self.object.pk})
 
@@ -26,15 +25,24 @@ class CreateBetView(LoginRequiredMixin, CreateView):
         match = Match.objects.get(pk=self.kwargs['match_pk'])
 
         form.instance.match = match
-        form.instance.quotation_h_team = Bet.get_quotation_h_team(form.instance)
-        form.instance.quotation_a_team = Bet.get_quotation_a_team(form.instance)
+        form.instance.quotation_h_team = Bet.get_quotation_h_team(
+            form.instance)
+        form.instance.quotation_a_team = Bet.get_quotation_a_team(
+            form.instance)
         form.instance.quotation_draw = Bet.get_quotation_draw(form.instance)
 
         user_toto_points = UserTotoInfo.objects.get(user=user).toto_points
         new_user_toto_points = user_toto_points - form.instance.stake
 
-        UserTotoInfo.objects.filter(user=user).update(user=user, toto_points=new_user_toto_points)
+        UserTotoInfo.objects.filter(user=user).update(
+            user=user, toto_points=new_user_toto_points)
 
         redirect_url = super(CreateBetView, self).form_valid(form)
 
         return redirect_url
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateBetView, self).get_context_data(**kwargs)
+        context['match'] = Match.objects.get(pk=self.kwargs['match_pk'])
+
+        return context

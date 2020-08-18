@@ -6,8 +6,8 @@ class BetCreateForm(forms.ModelForm):
 
     class Meta:
         model = Bet
-        # exclude = ('match',)
         fields = ('gamble', 'stake')
+        widgets = {'gamble': forms.HiddenInput()}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -11,3 +11,6 @@ from .match_update_view import *
 from .bet_detail_view import *
 from .create_bet_view import *
 from .bet_list_view import *
+from .user_dashboard_view import *
+from .matches_all_list_view import *
+from .team_list_view import *

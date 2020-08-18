@@ -16,7 +16,7 @@ class CompetitionDetailView(DetailView):
             competition=competition).order_by('naam')
 
         query_set = TeamCompetition.objects.filter(
-            competition=competition).order_by('points').order_by('team__naam')
+            competition=competition).order_by('points').order_by('-points')
 
         context.update({'teams_detail': query_set_team,
                         'competition_teams_detail': query_set})

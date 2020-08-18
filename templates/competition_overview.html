@@ -2,16 +2,18 @@
 
 {% block content %}
 
-<div class="jumbotron">
-
-  <a class="btn btn-primary" href="{% url 'competitie_manager_app:create_competition' %}">Competitie maken<span class="sr-only">(current)</span></a>
-
-  {% for competitie in competition_list  %}
-    <h2><a href="{% url 'competitie_manager_app:competition_detail' pk=competitie.pk %}">{{ competitie.naam }}</a></h2>
-    <p>{{ competitie.sport_soort }}</p>
-    <a href=""></a>
-  {% endfor %}
-
+<div class="container">
+  <div class="jumbotron">
+    <a class="btn btn-warning mb-3" href="{% url 'competitie_manager_app:create_competition' %}">Competitie maken<span class="sr-only">(current)</span></a>
+    <ul class="list-group">
+      {% for competitie in competition_list  %}
+      <a class="list-group-item list-group-item-action" href="{% url 'competitie_manager_app:competition_detail' pk=competitie.pk %}">
+        <h5>{{ competitie.naam }}</h5>
+        <p>{{ competitie.sport_soort }}</p>
+      </a>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
 
 {% endblock %}

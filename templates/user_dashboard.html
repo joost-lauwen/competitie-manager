@@ -1,0 +1,138 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="box">
+  <div class="text">
+    <div id="content">
+      {% if user.is_authenticated %}
+      <h1>Welkom {{ user.username }}!</h1>
+      <h2>Toto Score: {{user_toto_ranking.toto_points}}</h2>
+    </div>
+  </div>
+
+  <div class="card-columns">
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card" style="width: 23rem;">
+          <div class="card-header">
+            <h5>Weddenschappen</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+
+            {% for bet in user_dashboard %}
+
+            {% if bet.match.is_finished and bet.bet_result %}
+            <a class="list-group-item list-group-item-action bet-won" href="{% url 'competitie_manager_app:bet_detail' competitie=bet.match.competition match_pk=bet.match.pk pk=bet.pk %}">{{ bet.match.home_team.naam }} vs
+              {{ bet.match.away_team.naam }} |
+              <mark class="won">+{{bet.prize_amount}}</mark></a>
+            {% elif bet.match.is_finished and not bet.bet_result %}
+            <a class="list-group-item list-group-item-action bet-won" href="{% url 'competitie_manager_app:bet_detail' competitie=bet.match.competition match_pk=bet.match.pk pk=bet.pk %}">{{ bet.match.home_team.naam }} vs
+              {{ bet.match.away_team.naam }} |
+              <mark class="lost">-{{bet.stake}}</mark></a>
+            {% else %}
+            <a class="list-group-item list-group-item-action bet-won" href="{% url 'competitie_manager_app:bet_detail' competitie=bet.match.competition match_pk=bet.match.pk pk=bet.pk %}">{{ bet.match.home_team.naam }} vs
+              {{ bet.match.away_team.naam }}</a>
+            {% endif %}
+
+            {% endfor %}
+
+          </ul>
+          <div class="card-footer">
+            <a href="{% url 'competitie_manager_app:competition_list' %}">Meer weddenschappen...</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card" style="width: 23rem;">
+          <div class="card-header">
+            <h5>Top 10 Toto Score</h5>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Naam</th>
+                <th scope="col">Punten</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for player in toto_ranking %}
+            <tr>
+              <td scope="row"></td>
+              <td scope="row">{{ player.user.username }}</td>
+              <td scope="row">{{ player.toto_points }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card" style="width: 23rem;">
+          <div class="card-header">
+            <h5>Wedstrijden</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            {% for match in match_list %}
+            <a class="list-group-item list-group-item-action" href="{% url 'competitie_manager_app:match_detail' competitie=match.competition pk=match.pk %}">{{ match.competition }} | {{ match.home_team }} vs {{ match.away_team }}</a>
+            {% endfor %}
+          </ul>
+          <div class="card-footer">
+            <a href="{% url 'competitie_manager_app:matches_all' %}">Meer wedstrijden...</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card" style="width: 23rem;">
+          <div class="card-header">
+            <h5>Competities</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            {% for competition in competition_list %}
+            <a class="list-group-item list-group-item-action" href="{% url 'competitie_manager_app:competition_detail' pk=competition.pk %}">{{ competition }}</a>
+            {% endfor %}
+          </ul>
+          <div class="card-footer">
+            <a href="{% url 'competitie_manager_app:competition_list' %}">Meer competities...</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card" style="width: 23rem;">
+          <div class="card-header">
+            <h5>Teams</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            {% for team in team_list %}
+            <a class="list-group-item list-group-item-action" href="{% url 'competitie_manager_app:team_detail' pk=team.pk %}">{{ team.naam }} | {{ team.sport_soort }}</a>
+            {% endfor %}
+          </ul>
+          <div class="card-footer">
+            <a href="{% url 'competitie_manager_app:teams_list' %}">Meer Teams...</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {% else %}
+  <a class="btn btn-warning" href="{% url 'competitie_manager_app:signup' %}"> Get started <i class="fas fa-trophy"></i> </a>
+
+  {% endif %}
+
+</div>
+{% endblock %}

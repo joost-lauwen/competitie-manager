@@ -1,19 +1,115 @@
-h1 {
-    color: orange;
-}
-
-table, th, td {
-    border: 2px solid black;
-}
-
 .container-navbar {
-    padding-bottom: 75px;
+  padding-bottom: 75px;
+}
+
+table {
+    counter-reset: rowNumber;
+}
+
+table tr > td:first-child {
+    counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
 }
 
 .image-container {
-    width: 20rem;
+  width: 20rem;
+}
+
+.jumbotron {
+  background-color: rgb(164 170 168 / 56%);
+}
+
+.gap-10 {
+				width:100%;
+				height:10px;
 }
 
 body {
-  padding-top: 20px;
+  max-height: auto;
+  max-width: 100%;
+  background: url(https://images.unsplash.com/photo-1521412644187-c49fa049e84d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80);
+  background-size: cover;
+  background-position: 0% 68%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.btn-warning {
+  color: white;
+  background-color: orangered;
+  border-color: orangered;
+  opacity: 1;
+}
+.btn-warning-clicked {
+  color: white;
+  background-color: orangered;
+  border-color: black;
+  opacity: 0.8;
+}
+
+.btn-warning:hover {
+  color: white;
+  background-color: orangered;
+  border-color: orangered;
+  opacity: 0.90
+}
+
+html {
+  max-height: 100%;
+  max-width: 100%
+}
+
+.text {
+  margin: 14% 0% 0% 6%;
+  height: 250px;
+  width: 450px
+}
+
+.box {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+#content {
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0, 4),
+    0px 8px 13px rgba(0, 0, 0, 0, 1),
+    0px 18px 23px rgba(0, 0, 0, 0, 1);
+  color: white;
+  height: 200px;
+  width: 400px;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 3em
+}
+
+hr {
+  width: 400px;
+  border-top: 1px solid #f8f8f8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0, 2);
+  margin-left: 0%
+}
+
+.btn-add {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.won {
+  color: #0aee0a;
+  background: none;
+}
+
+.lost {
+  color: red;
+  background: none;
 }

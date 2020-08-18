@@ -5,7 +5,7 @@
 <div class="container">
   <div class="jumbotron">
     <ul class="list-group">
-      {% for match in match_list  %}
+      {% for match in match_all_list  %}
       <a class="list-group-item list-group-item-action" href="{% url 'competitie_manager_app:match_detail' competitie=match.competition pk=match.pk %}">
         <h5>{{ match.home_team.naam }} vs {{ match.away_team.naam }}</h5>
         <p>{{ match.h_goals }} - {{ match.a_goals }}</p>

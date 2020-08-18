@@ -61,7 +61,7 @@ class MatchUpdateView(LoginRequiredMixin, UpdateView):
                     bet.prize_amount = bet.stake * bet.quotation_a_team
             else:
                 bet.bet_result = False
-                bet.prize_amount = 0.0
+                bet.prize_amount = 0
 
             user_toto_points = UserTotoInfo.objects.get(user=bet.user).toto_points
             UserTotoInfo.objects.filter(user=bet.user).update(user=bet.user, toto_points=user_toto_points + decimal.Decimal(bet.prize_amount))
