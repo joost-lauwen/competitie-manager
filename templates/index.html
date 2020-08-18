@@ -1,5 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Welkom</h1>
+<div class="text">
+  <div id="content">
+    <h1>Wedden op </h1>
+    <h1>wedstrijden! </h1>
+    <h3>Samen met je vrienden <i class="fas fa-users"></i></h3>
+    <hr>
+
+    {% if user.is_authenticated %}
+    <a class="btn btn-warning" href="{% url 'competitie_manager_app:user_dashboard' %}"> Get started <i class="fas fa-trophy"></i> </a>
+
+    {% else %}
+    <a class="btn btn-warning" href="{% url 'competitie_manager_app:signup' %}"> Get started <i class="fas fa-trophy"></i> </a>
+
+    {% endif %}
+
+  </div>
+</div>
 {% endblock %}

@@ -3,22 +3,37 @@
 
 <head>
   {% load static %}
+  {% load bootstrap4 %}
   {% block title %}<title>Competitie Manager</title>{% endblock %}
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
   <!-- Add additional CSS in static file -->
   <link rel="stylesheet" href="{% static 'css/indexstyle.css' %}">
-  <link rel="shortcut icon" href="{% static 'images/novi.jfif' %}">
+  <link rel="shortcut icon" href="{% static 'images/novi.png' %}">
 </head>
 
 <body>
   <div class="container-navbar">
+
     {% block navbar %}
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="{% url 'competitie_manager_app:index' %}">Thuispagina</a>
+
+      {% if not user.is_authenticated %}
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="{% url 'competitie_manager_app:index' %}">
+          <img src="/static/images/novi.png" width="30" height="30" alt="">
+          &nbsp;&nbsp;Home
+        </a>
+      {% endif %}
 
       {% if user.is_authenticated %}
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="{% url 'competitie_manager_app:user_dashboard' %}">
+          <img src="/static/images/novi.png" width="30" height="30" alt="">
+          &nbsp;&nbsp;Home
+        </a>
 
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
@@ -38,7 +53,7 @@
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'competitie_manager_app:logout' %}">Uitloggen</a>
+            <a class="btn btn-warning btn-sm mr-2" href="{% url 'competitie_manager_app:logout' %}">Uitloggen</a>
           </li>
         </ul>
 
@@ -46,10 +61,10 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'competitie_manager_app:signup' %}">Registreren</a>
+            <a class="btn btn-warning btn-sm mr-2" href="{% url 'competitie_manager_app:signup' %}">Registreren</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'competitie_manager_app:login' %}">Inloggen</a>
+            <a class="btn btn-warning btn-sm" href="{% url 'competitie_manager_app:login' %}">Inloggen</a>
           </li>
         </ul>
         {% endif %}
@@ -65,6 +80,10 @@
     {% endblock %}
   </div>
 
+  <script type="text/javascript" src="{% static 'scripts/bet_buttons.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 
 </html>

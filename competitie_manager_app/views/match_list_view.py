@@ -9,6 +9,9 @@ class MatchListView(ListView):
     template_name = 'match_overview.html'
 
     def get_queryset(self):
-        self.competitie = get_object_or_404(Competition, naam=self.kwargs['competitie'])
+        if self.kwargs == 'all':
+            return Match.objects.all().order_by('-id')
+        else:
+            self.competitie = get_object_or_404(Competition, naam=self.kwargs['competitie'])
 
-        return Match.objects.filter(competition=self.competitie)
+            return Match.objects.filter(competition=self.competitie)
