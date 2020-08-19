@@ -1,7 +1,7 @@
 from django import forms
 from competitie_manager_app.models import Team
 
-
+# Form to create a team.
 class TeamForm(forms.ModelForm):
 
     class Meta:

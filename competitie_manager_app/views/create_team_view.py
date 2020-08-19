@@ -4,6 +4,7 @@ from competitie_manager_app.models.team import Team
 from competitie_manager_app.forms.team_form import TeamForm
 
 
+# Class that handles the creation of a team.
 class CreateTeamView(LoginRequiredMixin, CreateView):
     login_url = '/login'
     redirect_field_name = 'team_detail.html'

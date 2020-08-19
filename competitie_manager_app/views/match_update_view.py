@@ -29,6 +29,7 @@ class MatchUpdateView(LoginRequiredMixin, UpdateView):
 
         form.instance.is_finished = True
 
+        # Determine match result and points each team has won
         if home_goals > away_goals:
             form.instance.result = 1
             TeamCompetition.objects.filter(competition=form.instance.competition, team=form.instance.home_team).update(
@@ -43,13 +44,16 @@ class MatchUpdateView(LoginRequiredMixin, UpdateView):
         else:
             form.instance.result = 2
 
+            # Update the amount of points each team has gained
             TeamCompetition.objects.filter(competition=form.instance.competition, team=form.instance.home_team).update(
                 points=home_team_competition.points + 1)
             TeamCompetition.objects.filter(competition=form.instance.competition, team=form.instance.away_team).update(
                 points=away_team_competition.points + 1)
 
+        # Get bets for updated match
         bets = Bet.objects.filter(match=form.instance)
 
+        # Update bet results for each bet for the updated match
         for bet in bets:
             if bet.gamble == form.instance.result:
                 bet.bet_result = True

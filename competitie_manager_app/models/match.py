@@ -4,7 +4,7 @@ from .competition import Competition
 from .team_competition import TeamCompetition
 from .team import Team
 
-
+# Model for the Match class. This model contains info about the matches.
 class Match(models.Model):
     home_team = models.ForeignKey(
         Team, null=True, on_delete=models.SET_NULL, related_name='match_home_team')
