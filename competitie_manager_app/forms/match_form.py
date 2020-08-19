@@ -1,7 +1,7 @@
 from django import forms
 from competitie_manager_app.models import Match
 
-
+# Form used to update a match.
 class MatchUpdateForm(forms.ModelForm):
 
     class Meta:

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from .match import Match
 from .team_competition import TeamCompetition
 
-
+# Model for the bet class. This model contains info about the bets on the matches.
 class Bet(models.Model):
     user = models.ForeignKey(
         User, null=False, on_delete=models.CASCADE, related_name='gambler', blank=False)
@@ -24,6 +24,7 @@ class Bet(models.Model):
     def get_absolute_url(self):
         return reverse('competitie_manager_app:bet_detail', kwargs={"competitie": self.match.competition, "match_pk": self.match.pk, "pk": self.pk})
 
+# Function to calculate the quotation if the home team wins.
     def get_quotation_h_team(self):
         h_team_points = TeamCompetition.objects.get(
             competition=self.match.competition, team=self.match.home_team).points
@@ -37,6 +38,7 @@ class Bet(models.Model):
         else:
             return 1.5
 
+# Function to calculate the quotation if the away team wins.
     def get_quotation_a_team(self):
         h_team_points = TeamCompetition.objects.get(
             competition=self.match.competition, team=self.match.home_team).points
@@ -50,6 +52,7 @@ class Bet(models.Model):
         else:
             return 1.75
 
+# Function to calculate the quotation for a draw result.
     def get_quotation_draw(self):
         h_team_points = TeamCompetition.objects.get(
             competition=self.match.competition, team=self.match.home_team).points

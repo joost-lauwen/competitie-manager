@@ -15,6 +15,7 @@ class CompetitionDetailView(DetailView):
         query_set_team = Team.objects.filter(
             competition=competition).order_by('naam')
 
+        # Get competition ranking
         query_set = TeamCompetition.objects.filter(
             competition=competition).order_by('points').order_by('-points')
 
