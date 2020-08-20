@@ -7,7 +7,7 @@ from competitie_manager_app.models.team_competition import TeamCompetition
 from competitie_manager_app.models.match import Match
 from competitie_manager_app.forms.competition_form import CompetitionCreateForm
 
-
+# Class to render the creation page of the competition model
 class CreateCompetitionView(LoginRequiredMixin, CreateView):
     login_url = '/login'
     redirect_field_name = 'competition_detail.html'

@@ -6,7 +6,7 @@ from competitie_manager_app.models.match import Match
 from competitie_manager_app.forms.bet_form import BetCreateForm
 from competitie_manager_app.models.user_toto_info import UserTotoInfo
 
-
+# Class to render create view of the bet model
 class CreateBetView(LoginRequiredMixin, CreateView):
     login_url = '/login'
     redirect_field_name = 'bet_detail.html'
@@ -24,6 +24,7 @@ class CreateBetView(LoginRequiredMixin, CreateView):
 
         match = Match.objects.get(pk=self.kwargs['match_pk'])
 
+        # Get the quotations for the match
         form.instance.match = match
         form.instance.quotation_h_team = Bet.get_quotation_h_team(
             form.instance)

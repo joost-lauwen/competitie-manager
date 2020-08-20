@@ -1,20 +1,25 @@
-{% extends "base.html" %}
-{% load bootstrap4 %}
+{% extends './base.html' %}
 
 {% block content %}
 
-
 <div class="container">
   <div class="jumbotron">
-    <h1>Teams</h1>
-    <a class="btn btn-warning" href="{% url 'competitie_manager_app:create_team' %}">Team maken<span class="sr-only">(current)</span></a>
-    <div class="gap-10"></div>
+    <h1>Mijn weddenschappen</h1>
     <ul class="list-group">
-      {% for team in team_list  %}
-      <a class="list-group-item list-group-item-action" "{% url 'competitie_manager_app:team_detail' pk=team.pk %}">
-        <h5>{{ team }}</h5>
-        <p>{{ team.sport_soort }}</p>
-      </a>
+      {% for bet in bet_list %}
+      {% if bet.match.is_finished and bet.bet_result %}
+      <a class="list-group-item list-group-item-action bet-won" href="{% url 'competitie_manager_app:bet_detail' competitie=bet.match.competition match_pk=bet.match.pk pk=bet.pk %}">{{ bet.match.home_team.naam }} vs
+        {{ bet.match.away_team.naam }} |
+        <mark class="won">+{{bet.prize_amount}}</mark></a>
+      {% elif bet.match.is_finished and not bet.bet_result %}
+      <a class="list-group-item list-group-item-action bet-won" href="{% url 'competitie_manager_app:bet_detail' competitie=bet.match.competition match_pk=bet.match.pk pk=bet.pk %}">{{ bet.match.home_team.naam }} vs
+        {{ bet.match.away_team.naam }} |
+        <mark class="lost">-{{bet.stake}}</mark></a>
+      {% else %}
+      <a class="list-group-item list-group-item-action bet-won" href="{% url 'competitie_manager_app:bet_detail' competitie=bet.match.competition match_pk=bet.match.pk pk=bet.pk %}">{{ bet.match.home_team.naam }} vs
+        {{ bet.match.away_team.naam }}</a>
+      {% endif %}
+
       {% endfor %}
     </ul>
 
@@ -31,7 +36,7 @@
         </li>
         {% endif %}
 
-        {% for n in page_obj.paginator.page_range %}
+      {% for n in page_obj.paginator.page_range %}
         {% if page_obj.number == n %}
         <li class="page-item active">
           <span class="page-link">{{ n }}<span class="sr-only">(current)</span></span>
@@ -39,7 +44,7 @@
         {% elif n > page_obj.number|add:'-3' and n < page_obj.number|add:'3' %}
         <li class="page-item"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
         {% endif %}
-        {% endfor %}
+      {% endfor %}
 
         {% if page_obj.has_next %}
         <li class="page-item">
@@ -51,6 +56,7 @@
         {% endif %}
     </nav>
   </div>
+</div>
 </div>
 
 {% endblock %}

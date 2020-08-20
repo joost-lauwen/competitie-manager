@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from competitie_manager_app.forms.user_creation_form import UserCreateForm
 from competitie_manager_app.models.user_toto_info import UserTotoInfo
 
-
+# Class to render the register page and handle the user registration
 class SignUp(FormView):
     form_class = UserCreateForm
     success_url = reverse_lazy('competitie_manager_app:index')
