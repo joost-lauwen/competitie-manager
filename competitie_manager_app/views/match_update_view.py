@@ -9,7 +9,7 @@ from competitie_manager_app.models.user_toto_info import UserTotoInfo
 from competitie_manager_app.forms.match_form import MatchUpdateForm
 
 
-
+# Class to render and handle the update of a match model
 class MatchUpdateView(LoginRequiredMixin, UpdateView):
     login_url = '/login'
     redirect_field_name = 'match_detail.html'

@@ -6,9 +6,10 @@ from .sport import Sport
 # Model for the competition class. This model contains info about the competitions.
 class Competition(models.Model):
     naam = models.CharField(max_length=50, unique=True)
-    sport_soort = models.ForeignKey(Sport, null=True, on_delete=models.SET_NULL, related_name='sport_competitie')
-    made_by = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='competition_owner', blank=True)
-
+    sport_soort = models.ForeignKey(
+        Sport, null=True, on_delete=models.SET_NULL, related_name='sport_competitie')
+    made_by = models.ForeignKey(
+        User, null=True, on_delete=models.SET_NULL, related_name='competition_owner', blank=True)
 
     def __str__(self):
         return self.naam

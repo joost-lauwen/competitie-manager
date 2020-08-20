@@ -14,14 +14,15 @@
     </ul>
     <p>{{match_all_list.number}}</p>
 
-    <nav aria-label="Page navigation">   <ul class="pagination">
+  <nav aria-label="Page navigation">   <ul class="pagination">
     {% if page_obj.has_previous %}
     <li class="page-item">
       <a class="page-link" href="?page=1" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">begin</span>
       </a>
-    </li>   {% endif %}
+    </li>
+    {% endif %}
 
     {% for n in page_obj.paginator.page_range %}
       {% if page_obj.number == n %}
@@ -40,7 +41,8 @@
           <span class="sr-only">end</span>
         </a>
       </li>
-      {% endif %}
+    {% endif %}
+    </nav>
   </div>
 </div>
 

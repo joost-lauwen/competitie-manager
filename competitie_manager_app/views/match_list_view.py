@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from competitie_manager_app.models.match import Match
 from competitie_manager_app.models.competition import Competition
 
+# Class to render the list page of matches model
 class MatchListView(ListView):
     context_object_name = 'match_list'
     model = Match

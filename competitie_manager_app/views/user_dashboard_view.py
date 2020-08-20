@@ -6,6 +6,7 @@ from competitie_manager_app.models.team_competition import TeamCompetition
 from competitie_manager_app.models.user_toto_info import UserTotoInfo
 from competitie_manager_app.models.team import Team
 
+# Class to render the user dashboard view
 class UserDashboardView(ListView):
     context_object_name = 'user_dashboard'
     model = Bet
@@ -14,6 +15,7 @@ class UserDashboardView(ListView):
     def get_queryset(self):
         return Bet.objects.filter(user=self.request.user).order_by('-id')[:10]
 
+    # Get the necesarry date to show on the dashboard page
     def get_context_data(self, **kwargs):
         context = super(UserDashboardView, self).get_context_data(**kwargs)
         context['match_list'] = Match.objects.all().order_by('-id')[:5]

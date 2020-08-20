@@ -2,21 +2,26 @@
 {% load bootstrap4 %}
 
 {% block content %}
+{# <body class="{% block body_class %}pagecreate{% endblock %}"> #}
+<div class="container-content">
 
-<div class="container">
-  <div class="jumbotron">
-  <h2>Weddenschap invullen</h2>
-  <h6><b>Kies hieronder de uitslag:</b></h6>
-  <div class="gap-10"></div>
-  <button class="btn btn-warning" type="button" id="bet_home" onclick="ButtonClick_BetHome()">{{ match.home_team }}</button>
-  <button class="btn btn-warning" type="button" id="bet_draw" onclick="ButtonClick_BetDraw()">Gelijkspel</button>
-  <button class="btn btn-warning" type="button" id="bet_away" onclick="ButtonClick_BetAway()">{{ match.away_team }}</button>
-  <div class="gap-10"></div>
-  <form class="" method="post" enctype='multipart/form-data'>
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <input type="submit" class="btn btn-warning" value="Wedden">
-  </form>
+  <div class="shadow-lg jumbotron-create card card-image mx-5 mt-5">
+    <div class="text-white text-center py-5 px-4">
+      <div class="container">
+        <h2>Weddenschap invullen</h2>
+        <h6><b>Kies hieronder de uitslag:</b></h6>
+        <div class="gap-10"></div>
+        <button class="btn btn-warning" type="button" id="bet_home" onclick="ButtonClick_BetHome()">{{ match.home_team }}</button>
+        <button class="btn btn-warning" type="button" id="bet_draw" onclick="ButtonClick_BetDraw()">Gelijkspel</button>
+        <button class="btn btn-warning" type="button" id="bet_away" onclick="ButtonClick_BetAway()">{{ match.away_team }}</button>
+        <div class="gap-10"></div>
+        <form class="" method="post" enctype='multipart/form-data'>
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <input type="submit" class="btn btn-warning" value="Wedden">
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

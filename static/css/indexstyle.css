@@ -20,8 +20,17 @@ table tr td:first-child::before {
   width: 20rem;
 }
 
+.jumbotron-create {
+  background-color: rgb(164 170 168 / 56%);
+  background: url(https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1791&q=80);
+  background-size: cover ;
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+}
+
 .jumbotron {
   background-color: rgb(164 170 168 / 56%);
+  padding: 2rem 2rem;
 }
 
 .gap-10 {
@@ -38,6 +47,13 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: 'Ubuntu', sans-serif;
+}
+
+.pagecreate {
+  font-family: 'Ubuntu', sans-serif;
+  background: #dedfe1;
+  background: -webkit-radial-gradient( #343a40,#dedfe1 );
+  background: radial-gradient(#343a40,#dedfe1);
 }
 
 .btn-warning {
@@ -87,7 +103,8 @@ html {
 
 h1 {
   font-weight: 800;
-  font-size: 3em
+  font-size: 3em;
+  text-transform: uppercase;
 }
 
 hr {
@@ -112,4 +129,15 @@ hr {
 .lost {
   color: red;
   background: none;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: orangered;
+  border-color: orangered;
+}
+
+#stake {
+  margin: auto;
 }

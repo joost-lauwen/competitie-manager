@@ -3,7 +3,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from competitie_manager_app.models.team import Team
 from competitie_manager_app.forms.team_form import TeamForm
 
-
 # Class that handles the creation of a team.
 class CreateTeamView(LoginRequiredMixin, CreateView):
     login_url = '/login'
