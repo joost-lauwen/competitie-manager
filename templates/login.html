@@ -2,16 +2,19 @@
 {% load bootstrap4 %}
 
 {% block content %}
-
-<div class="container">
-  <div class="jumbotron">
-    <h1>Inloggen</h1>
-    <form class="" method="post">
-      {% csrf_token %}
-      {% bootstrap_form form %}
-      <input type="submit" class="btn btn-warning" value="Inloggen">&nbsp;&nbsp;
-      <a href="{% url 'competitie_manager_app:signup' %}">Nog geen account? Klik hier om te registreren.</a>
-    </form>
+<div class="container-content">
+  <div class="shadow-lg jumbotron-create card card-image mx-5 mt-5">
+    <div class="text-white text-center py-5 px-4">
+      <div class="container">
+        <h1>Inloggen</h1>
+        <form class="" method="post">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <input type="submit" class="btn btn-warning" value="Inloggen">&nbsp;&nbsp;
+          <a class="signup-link" href="{% url 'competitie_manager_app:signup' %}">Nog geen account? Klik hier om te registreren.</a>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 

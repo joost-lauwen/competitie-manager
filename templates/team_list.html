@@ -11,7 +11,7 @@
     <div class="gap-10"></div>
     <ul class="list-group">
       {% for team in team_list  %}
-      <a class="list-group-item list-group-item-action" "{% url 'competitie_manager_app:team_detail' pk=team.pk %}">
+      <a class="list-group-item list-group-item-action" href="{% url 'competitie_manager_app:team_detail' pk=team.pk %}">
         <h5>{{ team }}</h5>
         <p>{{ team.sport_soort }}</p>
       </a>

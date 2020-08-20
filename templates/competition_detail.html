@@ -6,9 +6,7 @@
     <div class="competition-detail-container">
       <h1>{{ competition_detail.naam }}</h1>
       <h2>{{ competition_detail.sport_soort }}</h2>
-
       <a class="btn btn-warning mb-3" href="{% url 'competitie_manager_app:matches' competitie=competition_detail.naam %}">Wedstrijden<span class="sr-only">(current)</span></a>
-
       <table class="table">
         <thead>
           <tr>
