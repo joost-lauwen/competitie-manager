@@ -141,3 +141,15 @@ hr {
 #stake {
   margin: auto;
 }
+
+.text-muted {
+  color: #fff !important;
+}
+
+.signup-link {
+  color: orangered;
+}
+
+.signup-link:hover {
+  color: white;
+}
