@@ -73,3 +73,10 @@ class MatchUpdateView(LoginRequiredMixin, UpdateView):
             bet.save()
 
         return super(MatchUpdateView, self).form_valid(form)
+
+    # Get model info about the match in the template
+    def get_context_data(self, **kwargs):
+        context = super(MatchUpdateView, self).get_context_data(**kwargs)
+        context['match_detail'] = self.object
+
+        return context

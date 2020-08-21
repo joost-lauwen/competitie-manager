@@ -15,6 +15,12 @@ class CreateBetView(LoginRequiredMixin, CreateView):
     model = Bet
     form_class = BetCreateForm
 
+    def get_form_kwargs(self, *args, **kwargs):
+        kwargs = super().get_form_kwargs(*args, **kwargs)
+        kwargs['user'] = self.request.user
+
+        return kwargs
+
     def get_succes_url(self):
         return reverse('bet_detail', kwargs={"competitie": self.match.competition, "match_pk": self.match, "pk": self.object.pk})
 
