@@ -1,17 +1,49 @@
 {% extends './base.html' %}
 
 {% block content %}
-
 <div class="container">
   <div class="jumbotron">
+    <h1>Wedstrijden</h1>
     <ul class="list-group">
       {% for match in match_list  %}
       <a class="list-group-item list-group-item-action" href="{% url 'competitie_manager_app:match_detail' competitie=match.competition pk=match.pk %}">
-        <h5>{{ match.home_team.naam }} vs {{ match.away_team.naam }}</h5>
-        <p>{{ match.h_goals }} - {{ match.a_goals }}</p>
+        <h5>{{ match.home_team.naam }} vs {{ match.away_team.naam }} | {{ match.h_goals }} - {{ match.a_goals }}</h5>
       </a>
       {% endfor %}
     </ul>
+
+    <div class="gap-10"></div>
+
+    <nav aria-label="Page navigation">   <ul class="pagination">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">begin</span>
+        </a>
+      </li>
+      {% endif %}
+
+      {% for n in page_obj.paginator.page_range %}
+        {% if page_obj.number == n %}
+          <li class="page-item active">
+            <span class="page-link">{{ n }}<span class="sr-only">(current)</span></span>
+          </li>
+        {% elif n > page_obj.number|add:'-3' and n < page_obj.number|add:'3' %}
+          <li class="page-item"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">end</span>
+          </a>
+        </li>
+      {% endif %}
+      </nav>
+    </div>
   </div>
 </div>
 

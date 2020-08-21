@@ -39,7 +39,7 @@
 
           </ul>
           <div class="card-footer">
-            <a href="{% url 'competitie_manager_app:bet_list' %}">Meer weddenschappen...</a>
+            <a class="signup-link" href="{% url 'competitie_manager_app:bet_list' %}">Meer weddenschappen...</a>
           </div>
         </div>
       </div>
@@ -69,7 +69,6 @@
             {% endfor %}
             </tbody>
           </table>
-
         </div>
       </div>
     </div>
@@ -86,7 +85,7 @@
             {% endfor %}
           </ul>
           <div class="card-footer">
-            <a href="{% url 'competitie_manager_app:matches_all' %}">Meer wedstrijden...</a>
+            <a class="signup-link" href="{% url 'competitie_manager_app:matches_all' %}">Meer wedstrijden...</a>
           </div>
         </div>
       </div>
@@ -104,7 +103,7 @@
             {% endfor %}
           </ul>
           <div class="card-footer">
-            <a href="{% url 'competitie_manager_app:competition_list' %}">Meer competities...</a>
+            <a class="signup-link" href="{% url 'competitie_manager_app:competition_list' %}">Meer competities...</a>
           </div>
         </div>
       </div>
@@ -118,11 +117,17 @@
           </div>
           <ul class="list-group list-group-flush">
             {% for team in team_list %}
-            <a class="list-group-item list-group-item-action" href="{% url 'competitie_manager_app:team_detail' pk=team.pk %}">{{ team.naam }} | {{ team.sport_soort }}</a>
+            <a class="list-group-item list-group-item-action" href="{% url 'competitie_manager_app:team_detail' pk=team.pk %}">
+              {% if team.image %}
+                <h5><img class="logotable" src="/media/{{ team.image }}"></img>&nbsp;&nbsp;{{ team.naam }} | {{ team.sport_soort }} </h5>
+              {% else %}
+                <h5><img class="logotable" src="/static/images/team-placeholder.png"></img>&nbsp;&nbsp;{{ team.naam }} | {{ team.sport_soort }} </h5>
+              {% endif %}
+            </a>
             {% endfor %}
           </ul>
           <div class="card-footer">
-            <a href="{% url 'competitie_manager_app:teams_list' %}">Meer Teams...</a>
+            <a class="signup-link" href="{% url 'competitie_manager_app:teams_list' %}">Meer Teams...</a>
           </div>
         </div>
       </div>

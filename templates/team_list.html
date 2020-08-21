@@ -2,8 +2,6 @@
 {% load bootstrap4 %}
 
 {% block content %}
-
-
 <div class="container">
   <div class="jumbotron">
     <h1>Teams</h1>
@@ -12,8 +10,11 @@
     <ul class="list-group">
       {% for team in team_list  %}
       <a class="list-group-item list-group-item-action" href="{% url 'competitie_manager_app:team_detail' pk=team.pk %}">
-        <h5>{{ team }}</h5>
-        <p>{{ team.sport_soort }}</p>
+        {% if team.image %}
+          <h5><img class="logolist" src="/media/{{ team.image }}"></img>&nbsp;&nbsp;{{ team }} | {{ team.sport_soort }} </h5>
+        {% else %}
+          <h5><img class="logolist" src="/static/images/team-placeholder.png"></img>&nbsp;&nbsp;{{ team }} | {{ team.sport_soort }} </h5>
+        {% endif %}
       </a>
       {% endfor %}
     </ul>

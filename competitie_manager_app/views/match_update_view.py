@@ -67,8 +67,16 @@ class MatchUpdateView(LoginRequiredMixin, UpdateView):
                 bet.bet_result = False
                 bet.prize_amount = 0
 
+            # Update total toto points for each user who made a bet on the updated match
             user_toto_points = UserTotoInfo.objects.get(user=bet.user).toto_points
             UserTotoInfo.objects.filter(user=bet.user).update(user=bet.user, toto_points=user_toto_points + decimal.Decimal(bet.prize_amount))
             bet.save()
 
         return super(MatchUpdateView, self).form_valid(form)
+
+    # Get model info about the match in the template
+    def get_context_data(self, **kwargs):
+        context = super(MatchUpdateView, self).get_context_data(**kwargs)
+        context['match_detail'] = self.object
+
+        return context

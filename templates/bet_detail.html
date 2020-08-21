@@ -2,17 +2,27 @@
 
 {% block content %}
 <div class="container">
-  <div class="jumbotron">
-    <div class="bet-detail-container">
-      <h1>{{ bet_detail.match.home_team.naam }} vs {{ bet_detail.match.away_team.naam }}<h1>
-      <h2>{{ bet_detail.quotation_h_team }} - {{ bet_detail.quotation_a_team }} - {{ bet_detail.quotation_draw }}</h2>
-      <p>Inzet: {{ bet_detail.stake }}</p>
-      <p>Gok: {{ bet_detail.gamble }}</p>
-      {% if bet_detail.match.is_finished and bet_detail.bet_result %}
-        <p>Gefeliciteerd! Je hebt {{bet_detail.prize_amount}} punten gewonnen!</p>
-      {% elif bet_detail.match.is_finished and not bet_detail.bet_result %}
-        <p>Helaas... Je bent {{bet_detail.stake}} punten verloren!</p>
-      {% endif %}
+  <div class="shadow-lg jumbotron-create card card-image mx-5 mt-5">
+    <div class="text-white text-center py-5 px-4">
+      <div class="container">
+        <h1>{{ bet_detail.match.home_team.naam }} vs {{ bet_detail.match.away_team.naam }}
+          <h1>
+            <h2>{{ bet_detail.quotation_h_team }} - {{ bet_detail.quotation_a_team }} - {{ bet_detail.quotation_draw }}</h2>
+            <h5>Inzet: {{ bet_detail.stake }}</h5>
+            {% if bet_detail.gamble == 1 %}
+              <h5>Gok: {{ bet_detail.match.home_team.naam }}</h5>
+            {% elif bet_detail.gamble == 2 %}
+              <h5>Gok: Gelijkspel</h5>
+            {% else %}
+              <h5>Gok: {{ bet_detail.match.away_team.naam }}</h5>
+            {% endif %}
+
+            {% if bet_detail.match.is_finished and bet_detail.bet_result %}
+            <h5>Gefeliciteerd! Je hebt {{ bet_detail.prize_amount }} punten gewonnen!</h5>
+            {% elif bet_detail.match.is_finished and not bet_detail.bet_result %}
+            <h5>Helaas... Je bent {{ bet_detail.stake }} punten verloren!</h5>
+            {% endif %}
+      </div>
     </div>
   </div>
 </div>

@@ -6,7 +6,7 @@ class MatchAllListView(ListView):
     context_object_name = 'match_all_list'
     model = Match
     template_name = 'match_all_overview.html'
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
         return Match.objects.all().order_by('-id')

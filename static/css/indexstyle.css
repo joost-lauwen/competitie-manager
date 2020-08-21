@@ -3,17 +3,17 @@
 }
 
 table {
-    counter-reset: rowNumber;
+  counter-reset: rowNumber;
 }
 
-table tr > td:first-child {
-    counter-increment: rowNumber;
+table tr>td:first-child {
+  counter-increment: rowNumber;
 }
 
 table tr td:first-child::before {
-    content: counter(rowNumber);
-    min-width: 1em;
-    margin-right: 0.5em;
+  content: counter(rowNumber);
+  min-width: 1em;
+  margin-right: 0.5em;
 }
 
 .image-container {
@@ -23,19 +23,19 @@ table tr td:first-child::before {
 .jumbotron-create {
   background-color: rgb(164 170 168 / 56%);
   background: url(https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1791&q=80);
-  background-size: cover ;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: 0% 50%;
 }
 
 .jumbotron {
-  background-color: rgb(164 170 168 / 56%);
+  background-color: rgb(164 170 168 / 70%);
   padding: 2rem 2rem;
 }
 
 .gap-10 {
-				width:100%;
-				height:10px;
+  width: 100%;
+  height: 10px;
 }
 
 body {
@@ -52,8 +52,8 @@ body {
 .pagecreate {
   font-family: 'Ubuntu', sans-serif;
   background: #dedfe1;
-  background: -webkit-radial-gradient( #343a40,#dedfe1 );
-  background: radial-gradient(#343a40,#dedfe1);
+  background: -webkit-radial-gradient(#343a40, #dedfe1);
+  background: radial-gradient(#343a40, #dedfe1);
 }
 
 .btn-warning {
@@ -62,6 +62,7 @@ body {
   border-color: orangered;
   opacity: 1;
 }
+
 .btn-warning-clicked {
   color: white;
   background-color: orangered;
@@ -152,4 +153,25 @@ hr {
 
 .signup-link:hover {
   color: white;
+}
+
+.matchresult {
+  background-color: rgb(164 170 168 / 70%);
+  color: white;
+  border-radius: 10px;
+}
+
+.logolist {
+  height: 50px;
+  width: auto;
+}
+
+.logo {
+  height: 170px;
+  width: auto;
+}
+
+.logotable {
+    height: 30px;
+    width: auto;
 }
