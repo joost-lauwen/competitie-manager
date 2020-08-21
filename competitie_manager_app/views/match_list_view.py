@@ -8,6 +8,7 @@ class MatchListView(ListView):
     context_object_name = 'match_list'
     model = Match
     template_name = 'match_overview.html'
+    paginate_by = 10
 
     def get_queryset(self):
         if self.kwargs == 'all':

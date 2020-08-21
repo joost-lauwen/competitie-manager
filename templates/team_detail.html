@@ -2,11 +2,16 @@
 
 {% block content %}
 <div class="container">
-  <div class="jumbotron">
-    <div class="team-detail-container">
-      <h1>{{ team_detail.naam }}</h1>
-      <div class="image-container">
-        <img class="logo" src="/media/{{ team_detail.image }}"></img>
+  <div class="shadow-lg jumbotron-create card card-image mx-5 mt-5">
+    <div class="text-white text-center py-5 px-4">
+      <div class="container">
+        <h1>{{ team_detail.naam }}</h1>
+        {% if team_detail.image %}
+        <div class="logo-container text-center">
+          <img class="logo" src="/media/{{ team_detail.image }}"></img>
+        </div>
+        {% endif %}
+        <h4>{{ team_detail.sport_soort }}</h4>
       </div>
     </div>
   </div>

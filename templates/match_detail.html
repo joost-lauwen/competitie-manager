@@ -1,18 +1,22 @@
 {% extends './base.html' %}
 
 {% block content %}
-<div class="container">
-  <div class="jumbotron">
-    <div class="match-detail-container">
-      <h1>{{ match_detail.home_team.naam }} vs {{ match_detail.away_team.naam }}<h1>
-      <h2>{{ match_detail.h_goals }} - {{ match_detail.a_goals }}</h2>
-      <p>{{ match_detail.competitie.naam }}</p>
+<div class="container-content">
+  <div class="shadow-lg jumbotron-create card card-image mx-5 mt-5">
+    <div class="text-white text-center py-5 px-4">
+      <div class="container">
+        <h1>{{ match_detail.home_team.naam }} vs {{ match_detail.away_team.naam }}
+          <h1>
+            <h2><mark class="matchresult">{{ match_detail.h_goals }} - {{ match_detail.a_goals }}</mark></h2>
+            <p>{{ match_detail.competitie.naam }}</p>
 
-      {% if not match_detail.is_finished %}
-        <a class="btn btn-primary" href="{% url 'competitie_manager_app:match_update' competitie=match_detail.competition pk=match_detail.pk %}">Uitslag invullen<span class="sr-only">(current)</span></a>
-        <a class="btn btn-primary" href="{% url 'competitie_manager_app:bet_create' competitie=match_detail.competition match_pk=match_detail.pk %}">Wedden<span class="sr-only">(current)</span></a>
-      {% endif %}
+            {% if not match_detail.is_finished %}
+            <a class="btn btn-warning" href="{% url 'competitie_manager_app:match_update' competitie=match_detail.competition pk=match_detail.pk %}">Uitslag invullen<span class="sr-only">(current)</span></a>
+            &nbsp;&nbsp;
+            <a class="btn btn-warning" href="{% url 'competitie_manager_app:bet_create' competitie=match_detail.competition match_pk=match_detail.pk %}">Wedden<span class="sr-only">(current)</span></a>
+            {% endif %}
 
+      </div>
     </div>
   </div>
 </div>

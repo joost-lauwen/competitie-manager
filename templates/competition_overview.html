@@ -9,8 +9,7 @@
     <ul class="list-group">
       {% for competitie in competition_list  %}
       <a class="list-group-item list-group-item-action" href="{% url 'competitie_manager_app:competition_detail' pk=competitie.pk %}">
-        <h5>{{ competitie.naam }}</h5>
-        <p>{{ competitie.sport_soort }}</p>
+        <h5>{{ competitie.naam }} | {{ competitie.sport_soort }}</h5>
       </a>
       {% endfor %}
     </ul>

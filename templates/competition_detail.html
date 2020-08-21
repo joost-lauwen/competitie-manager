@@ -7,7 +7,7 @@
       <h1>{{ competition_detail.naam }}</h1>
       <h2>{{ competition_detail.sport_soort }}</h2>
       <a class="btn btn-warning mb-3" href="{% url 'competitie_manager_app:matches' competitie=competition_detail.naam %}">Wedstrijden<span class="sr-only">(current)</span></a>
-      <table class="table">
+      <table class="table table-dark">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -19,13 +19,16 @@
           {% for team in competition_teams_detail %}
           <tr>
             <td scope="row"></td>
-            <td scope="row">{{ team.team.naam }}</td>
+            {% if team.team.image %}
+            <td scope="row"><img class="logotable" src="/media/{{ team.team.image }}"></img>&nbsp;&nbsp;{{ team.team.naam }}</td>
+            {% else %}
+            <td scope="row"><img class="logotable" src="/static/images/team-placeholder-white.png"></img>&nbsp;&nbsp;{{ team.team.naam }}</td>
+            {% endif %}
             <td scope="row">{{ team.points }}</td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
-
     </div>
   </div>
 </div>
